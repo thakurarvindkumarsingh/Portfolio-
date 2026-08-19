@@ -7,7 +7,8 @@ const navItems = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll("section");
 
 // Mobile Menu Toggle
-hamburger.addEventListener("click", () => {
+hamburger.addEventListener("click", (e) => {
+  e.stopPropagation();
   navLinks.classList.toggle("active");
   const isOpen = navLinks.classList.contains("active");
   hamburger.innerHTML = isOpen 
@@ -25,7 +26,8 @@ navItems.forEach((item) => {
 
 // Close Mobile Menu on outside click
 document.addEventListener("click", (e) => {
-  if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+  // Only close if clicking outside both hamburger and nav
+  if (!e.target.closest(".hamburger") && !e.target.closest(".nav-links")) {
     navLinks.classList.remove("active");
     hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
   }
