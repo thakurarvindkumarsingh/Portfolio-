@@ -1,9 +1,11 @@
 // Initialize AOS (Animate On Scroll)
-AOS.init({
-  duration: 800,
-  easing: 'ease-in-out',
-  once: false,
-  mirror: true
+document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({
+    duration: 700,
+    easing: "ease-out-cubic",
+    once: true,
+    offset: 50
+  });
 });
 
 // DOM Elements
@@ -24,7 +26,7 @@ hamburger.addEventListener("click", (e) => {
     : '<i class="fa-solid fa-bars"></i>';
 });
 
-// Close Mobile Menu on item click
+// Close Mobile Menu on Click
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
     navLinks.classList.remove("active");
@@ -32,7 +34,6 @@ navItems.forEach((item) => {
   });
 });
 
-// Close Mobile Menu on outside click
 document.addEventListener("click", (e) => {
   if (!e.target.closest(".hamburger") && !e.target.closest(".nav-links")) {
     navLinks.classList.remove("active");
@@ -40,35 +41,33 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Theme Toggle System
-function setTheme(isDark) {
-  if (isDark) {
-    document.body.classList.add("dark-mode");
+// Theme Toggle Function
+function setTheme(isLight) {
+  if (isLight) {
+    document.body.classList.add("light-mode");
     themeIcon.classList.replace("fa-moon", "fa-sun");
-    localStorage.setItem("theme", "dark");
-  } else {
-    document.body.classList.remove("dark-mode");
-    themeIcon.classList.replace("fa-sun", "fa-moon");
     localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.remove("light-mode");
+    themeIcon.classList.replace("fa-sun", "fa-moon");
+    localStorage.setItem("theme", "dark");
   }
 }
 
-// Initial Theme Check (Saved preference or OS mode)
+// Default Dark Theme Setup
 const savedTheme = localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+if (savedTheme === "light") {
   setTheme(true);
 } else {
   setTheme(false);
 }
 
 themeToggle.addEventListener("click", () => {
-  const isCurrentlyDark = document.body.classList.contains("dark-mode");
-  setTheme(!isCurrentlyDark);
+  const isLight = document.body.classList.contains("light-mode");
+  setTheme(!isLight);
 });
 
-// Active Link Highlight on Scroll
+// Scrollspy for Active Navbar Link
 window.addEventListener("scroll", () => {
   let current = "";
   sections.forEach((section) => {
@@ -84,37 +83,4 @@ window.addEventListener("scroll", () => {
       link.classList.add("active");
     }
   });
-});
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    const target = document.querySelector(targetId);
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Add scroll reveal animation
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.project-card, .skill-card, .timeline-card').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'all 0.6s ease';
-  observer.observe(el);
 });
