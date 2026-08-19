@@ -852,3 +852,56 @@ header {
     text-align: center;
   }
   }
+
+/* Overlay and mobile menu z-index + close button */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none; /* until visible */
+  z-index: 1000; /* sits under the menu but above page content */
+}
+
+.nav-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ensure the mobile menu is above the overlay and header */
+.nav-links {
+  z-index: 1002;
+}
+
+/* close button inside the mobile menu */
+.nav-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1003; /* ensure icon is above everything in the menu */
+}
+
+/* optional: smoother menu animation using transform (override mobile rules) */
+@media (max-width: 900px) {
+  .nav-links {
+    left: 0; /* keep left so JS toggles .active which can use transform */
+    transform: translateX(-100%);
+    transition: transform 0.28s ease;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+}
