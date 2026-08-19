@@ -16,28 +16,87 @@ const themeIcon = themeToggle.querySelector("i");
 const navItems = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll("section");
 
+let navOverlay = null;
+let navCloseBtn = null;
+
+// Utility: create overlay that sits behind the menu but above page content
+function ensureOverlay() {
+  if (navOverlay) return navOverlay;
+  navOverlay = document.createElement('div');
+  navOverlay.className = 'nav-overlay';
+  navOverlay.addEventListener('click', closeMenu);
+  document.body.appendChild(navOverlay);
+  return navOverlay;
+}
+
+function ensureCloseBtn() {
+  if (navCloseBtn) return navCloseBtn;
+  navCloseBtn = document.createElement('button');
+  navCloseBtn.className = 'nav-close';
+  navCloseBtn.setAttribute('aria-label', 'Close Menu');
+  navCloseBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+  navCloseBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeMenu();
+  });
+  navLinks.appendChild(navCloseBtn);
+  return navCloseBtn;
+}
+
+function openMenu() {
+  navLinks.classList.add('active');
+  hamburger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+  // prevent background scroll
+  document.body.style.overflow = 'hidden';
+  // show overlay
+  const overlay = ensureOverlay();
+  // small timeout to allow CSS transition
+  requestAnimationFrame(() => {
+    overlay.classList.add('visible');
+  });
+  ensureCloseBtn();
+}
+
+function closeMenu() {
+  navLinks.classList.remove('active');
+  hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  document.body.style.overflow = '';
+  if (navOverlay) {
+    navOverlay.classList.remove('visible');
+    // remove overlay after transition
+    setTimeout(() => {
+      if (navOverlay) {
+        navOverlay.remove();
+        navOverlay = null;
+      }
+    }, 250);
+  }
+  if (navCloseBtn) {
+    navCloseBtn.remove();
+    navCloseBtn = null;
+  }
+}
+
 // Mobile Menu Toggle
 hamburger.addEventListener("click", (e) => {
   e.stopPropagation();
-  navLinks.classList.toggle("active");
-  const isOpen = navLinks.classList.contains("active");
-  hamburger.innerHTML = isOpen 
-    ? '<i class="fa-solid fa-xmark"></i>' 
-    : '<i class="fa-solid fa-bars"></i>';
+  const isOpen = navLinks.classList.contains('active');
+  if (isOpen) closeMenu(); else openMenu();
 });
 
-// Close Mobile Menu on Click
+// Close Mobile Menu on Click of nav item
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    closeMenu();
   });
 });
 
+// Close when clicking outside the menu/hamburger
 document.addEventListener("click", (e) => {
-  if (!e.target.closest(".hamburger") && !e.target.closest(".nav-links")) {
-    navLinks.classList.remove("active");
-    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  const clickedInsideMenu = !!e.target.closest('.nav-links');
+  const clickedHamburger = !!e.target.closest('.hamburger');
+  if (!clickedInsideMenu && !clickedHamburger) {
+    closeMenu();
   }
 });
 
