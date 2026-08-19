@@ -1,3 +1,11 @@
+/**
+ * Final mobile menu polish
+ * - keep header above overlay
+ * - make overlay start below header
+ * - ensure menu and close button are above floating-action buttons
+ * - hide header hamburger while the in-menu close button is shown (avoid double X)
+ */
+
 // Initialize AOS (Animate On Scroll)
 document.addEventListener("DOMContentLoaded", () => {
   AOS.init({
@@ -45,6 +53,9 @@ function ensureCloseBtn() {
 
 function openMenu() {
   navLinks.classList.add('active');
+  // hide the header hamburger to avoid duplicate X UI
+  hamburger.classList.add('hidden');
+  // update icon (kept for accessibility if hamburger visible)
   hamburger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
   // prevent background scroll
   document.body.style.overflow = 'hidden';
@@ -59,6 +70,7 @@ function openMenu() {
 
 function closeMenu() {
   navLinks.classList.remove('active');
+  hamburger.classList.remove('hidden');
   hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
   document.body.style.overflow = '';
   if (navOverlay) {
