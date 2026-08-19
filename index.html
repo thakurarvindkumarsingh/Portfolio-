@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 
 <body>
@@ -22,6 +23,7 @@
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -38,13 +40,14 @@
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="hero-content">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
       <div class="status-badge"><span class="pulse-dot"></span> Available for new opportunities</div>
       <h1>Building scalable apps with <span>clean code</span>.</h1>
       <p>Hi, I'm <strong>Arvind Kumar Singh</strong>, a Full-Stack Developer crafting fast, responsive web applications and data-driven solutions.</p>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">Explore Projects <i class="fa-solid fa-arrow-right"></i></a>
         <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        <a href="#" class="btn btn-resume"><i class="fa-solid fa-download"></i> Resume</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
@@ -58,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="hero-visual">
+    <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
       <div class="avatar-wrapper">
         <img src="images/img.jpeg" alt="Arvind Kumar Singh" class="hero-img">
       </div>
@@ -68,15 +71,15 @@
   <!-- About Section -->
   <section class="section about" id="about">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="800">
         <span class="section-tag">Overview</span>
         <h2>About Me</h2>
       </div>
       <div class="about-grid">
-        <div class="about-image-card">
+        <div class="about-image-card" data-aos="fade-right" data-aos-duration="1000">
           <img src="images/img.jpeg" alt="Arvind Kumar Singh">
         </div>
-        <div class="about-text">
+        <div class="about-text" data-aos="fade-left" data-aos-duration="1000">
           <h3>Passionate developer turning ideas into reality.</h3>
           <p>
             I specialize in full-stack architecture, building intuitive user interfaces and resilient backend systems. With a strong foundation in computer applications and modern web standards, I create solutions that are both beautiful and performant. My passion lies in solving complex problems with elegant code and delivering exceptional user experiences.
@@ -95,37 +98,37 @@
   <!-- Skills Section -->
   <section class="section skills" id="skills">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="800">
         <span class="section-tag">Tech Stack</span>
         <h2>Skills & Expertise</h2>
       </div>
       <div class="skills-grid">
-        <div class="skill-card">
+        <div class="skill-card" data-aos="zoom-in" data-aos-duration="600">
           <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
           <h4>Frontend</h4>
           <p>HTML5, CSS3, JavaScript (ES6+), React.js, Tailwind CSS</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
           <div class="skill-icon"><i class="fa-brands fa-node"></i></div>
           <h4>Backend</h4>
           <p>Node.js, Express.js, Python, RESTful APIs</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
           <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
           <h4>Databases</h4>
           <p>MongoDB, MySQL, Database Indexing & Schemas</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300">
           <div class="skill-icon"><i class="fa-solid fa-chart-line"></i></div>
           <h4>Data & ML</h4>
           <p>Python, NumPy, Pandas, Predictive Modeling</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400">
           <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
           <h4>Tools & DevOps</h4>
           <p>Git, GitHub, VS Code, Postman, Vercel</p>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
           <div class="skill-icon"><i class="fa-solid fa-layer-group"></i></div>
           <h4>Architecture</h4>
           <p>Responsive UI/UX, MVC, Component-Driven Design</p>
@@ -137,12 +140,12 @@
   <!-- Projects Section -->
   <section class="section projects" id="projects">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="800">
         <span class="section-tag">Portfolio</span>
         <h2>Featured Projects</h2>
       </div>
       <div class="projects-grid">
-        <article class="project-card">
+        <article class="project-card" data-aos="fade-up" data-aos-duration="800">
           <div class="project-thumb">
             <img src="images/img.jpeg" alt="Food Delivery Platform">
           </div>
@@ -161,7 +164,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <div class="project-thumb">
             <img src="images/img.jpeg" alt="Disease Prediction ML Model">
           </div>
@@ -180,7 +183,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <div class="project-thumb">
             <img src="images/img.jpeg" alt="Developer Portfolio">
           </div>
@@ -202,28 +205,67 @@
     </div>
   </section>
 
+  <!-- Experience Section -->
+  <section class="section experience" id="experience">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+        <span class="section-tag">Career</span>
+        <h2>Work Experience</h2>
+      </div>
+      <div class="experience-timeline">
+        <div class="experience-card" data-aos="fade-right" data-aos-duration="800">
+          <div class="experience-marker"></div>
+          <div class="experience-content">
+            <h3>Full-Stack Developer Intern</h3>
+            <p class="company">Tech Startup Hub</p>
+            <p class="duration"><i class="fa-solid fa-calendar"></i> Jan 2024 - Present</p>
+            <p class="description">Working on MERN stack projects, implementing responsive UI/UX designs, and optimizing backend performance with Node.js and MongoDB.</p>
+          </div>
+        </div>
+        <div class="experience-card" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+          <div class="experience-marker"></div>
+          <div class="experience-content">
+            <h3>Web Development Freelancer</h3>
+            <p class="company">Self-Employed</p>
+            <p class="duration"><i class="fa-solid fa-calendar"></i> Jun 2023 - Dec 2023</p>
+            <p class="description">Built 5+ responsive websites and web applications for clients using React, JavaScript, and modern CSS frameworks.</p>
+          </div>
+        </div>
+        <div class="experience-card" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
+          <div class="experience-marker"></div>
+          <div class="experience-content">
+            <h3>Project Lead - Hackathon</h3>
+            <p class="company">Annual Tech Competition</p>
+            <p class="duration"><i class="fa-solid fa-calendar"></i> Feb 2023 - Mar 2023</p>
+            <p class="description">Led a team of 3 developers to build a full-stack disease prediction system that won 2nd place in hackathon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Education Section -->
   <section class="section education" id="education">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="800">
         <span class="section-tag">Background</span>
         <h2>Education & Journey</h2>
       </div>
       <div class="timeline">
-        <div class="timeline-card">
+        <div class="timeline-card" data-aos="fade-up" data-aos-duration="800">
           <div class="timeline-marker"></div>
           <span class="timeline-date">2022 - 2025</span>
           <h3>Bachelor of Computer Applications (BCA)</h3>
           <p class="institution">Dr. A.P.J. Abdul Kalam Technical University, Lucknow</p>
           <p class="description">Core studies in data structures, web application architecture, databases, and software engineering principles.</p>
         </div>
-        <div class="timeline-card">
+        <div class="timeline-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <div class="timeline-marker"></div>
           <span class="timeline-date">2020 - 2021</span>
           <h3>Intermediate (12th)</h3>
           <p class="institution">UP Board</p>
         </div>
-        <div class="timeline-card">
+        <div class="timeline-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <div class="timeline-marker"></div>
           <span class="timeline-date">2018 - 2019</span>
           <h3>High School (10th)</h3>
@@ -236,12 +278,12 @@
   <!-- Contact Section -->
   <section class="section contact" id="contact">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" data-aos="fade-up" data-aos-duration="800">
         <span class="section-tag">Let's Connect</span>
         <h2>Contact Me</h2>
       </div>
       <div class="contact-wrapper">
-        <div class="contact-card">
+        <div class="contact-card" data-aos="fade-right" data-aos-duration="1000">
           <h3>Get in Touch</h3>
           <p>Have a project in mind or want to discuss engineering opportunities? Let's connect.</p>
           <div class="contact-item">
@@ -258,9 +300,16 @@
               <p>arvindkumarsingh1170@gmail.com</p>
             </div>
           </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Phone</strong>
+              <p>+91 XXXXX XXXXX</p>
+            </div>
+          </div>
         </div>
 
-        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" data-aos="fade-left" data-aos-duration="1000">
           <input type="hidden" name="access_key" value="0f4f88a9-e918-4425-a5e8-1fea13fe5076">
           <div class="form-group">
             <label for="name">Your Name</label>
@@ -285,13 +334,14 @@
     <div class="container footer-content">
       <p>&copy; 2026 Arvind Kumar Singh. Designed with clean code.</p>
       <div class="footer-socials">
-        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://github.com/thakurarvindkumarsingh" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/thakurarvindkumarsingh" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com/ArvindKSingh" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
       </div>
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

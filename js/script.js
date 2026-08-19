@@ -1,3 +1,11 @@
+// Initialize AOS (Animate On Scroll)
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: false,
+  mirror: true
+});
+
 // DOM Elements
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
@@ -26,7 +34,6 @@ navItems.forEach((item) => {
 
 // Close Mobile Menu on outside click
 document.addEventListener("click", (e) => {
-  // Only close if clicking outside both hamburger and nav
   if (!e.target.closest(".hamburger") && !e.target.closest(".nav-links")) {
     navLinks.classList.remove("active");
     hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
@@ -77,4 +84,37 @@ window.addEventListener("scroll", () => {
       link.classList.add("active");
     }
   });
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Add scroll reveal animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.project-card, .skill-card, .timeline-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'all 0.6s ease';
+  observer.observe(el);
 });
